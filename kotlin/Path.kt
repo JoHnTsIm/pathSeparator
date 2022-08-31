@@ -6,7 +6,7 @@ class Path {
     private var isFileNameComplete: Boolean = false
     private var isFileComplete: Boolean = false
 
-
+    //  separates the file's path extension from the path and save it to a new string
     fun fileExtensionSeparator(FilePath : String): String {
         var fileExtension: String = ""
         loop@ for (char in FilePath.reversed()) {
@@ -20,7 +20,9 @@ class Path {
         fileExtension = fileExtension.reversed()
         return fileExtension
     }
-
+    
+    
+    //  separates the file's path name from the path and save it to a new string
     fun fileNameSeparator(FilePath : String): String {
         loop@ for (char in FilePath.reversed().replace("\\", "/")) {
             if (char != '/' && !isFileNameComplete) {
@@ -33,13 +35,15 @@ class Path {
         fileName = fileName.reversed().dropLastWhile { it != '.' }.replace(".", "")
         return fileName
     }
-
+    
+    //  separates the path from the file's path and save it to a new string
     fun filePathSeparator(FilePath : String): String {
         filePath = FilePath.replace("\\", "/")
         filePath = filePath.dropLastWhile { it != '/' }
         return filePath
     }
-
+    
+    //  separates the the file+extension from the file's path and save it to a new string
     fun fileSeparator(FilePath : String): String {
             loop@ for (char in FilePath.reversed().replace("\\", "/")) {
                 if (char != '/' && !isFileComplete) {
